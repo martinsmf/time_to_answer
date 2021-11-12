@@ -29,5 +29,5 @@ Rails.application.config.assets.precompile += %w(
 )
 
 # These files are in /vendor/assets
-Rails.application.config.assets.precompile += %w(jquery-2.2.4/dist/jquery.min.js)
+Rails.application.config.assets.precompile += %w(jquery-2.2.3/dist/jquery.min.js)
 
