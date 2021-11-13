@@ -26,8 +26,19 @@ Rails.application.config.assets.precompile += %w(
    sb-admin-2.min.css
    custom.min.js
    custom.min.css
+   img.jpg
+   undraw_profile.svg
+   undraw_profile_3.svg
+   undraw_profile_2.svg
+   undraw_profile_1.svg
 )
 
 # These files are in /vendor/assets
-Rails.application.config.assets.precompile += %w(jquery-2.2.3/dist/jquery.min.js)
-
+Rails.application.config.assets.precompile += %w(
+   jquery_2_2_3/dist/jquery.min.js
+   bootstrap/dist/js/bootstrap.bundle.min.js
+   malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css
+   malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js
+   css/custom.min.css
+   js/custom.min.js
+)
