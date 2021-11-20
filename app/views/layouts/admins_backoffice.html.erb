@@ -90,7 +90,7 @@
                           <li class="nav-item dropdown no-arrow">
                               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_admin.email %></span>
                                     <%= image_tag "undraw_profile.svg", class: 'img-profile rounded-circle' %>
                               </a>
                               <!-- Dropdown - User Information -->
@@ -110,7 +110,7 @@
 
                   <!-- Begin Page Content -->
                   <div class="container-fluid">
-                      <%= action_name %>
+
                       <!-- Page Heading -->
                       <%= yield %>
 
@@ -155,6 +155,21 @@
       <!-- Rails -->
       <%= javascript_include_tag 'application' %>
       <%= javascript_include_tag 'admins_backoffice' %>
+
+      <% if notice %>
+        <%= javascript_tag do %>
+            $.bootstrapGrowl("<%= notice %>", {
+            ele: 'body', // which element to append to
+            type: 'success', // (null, 'info', 'danger', 'success')
+            offset: {from: 'top', amount: 10}, // 'top', or 'bottom'
+            align: 'right', // ('left', 'right', or 'center')
+            width: 250, // (integer, or 'auto')
+            delay: 4000, // Time while the message will be displayed. It's not equivalent to the *demo* timeOut!
+            allow_dismiss: true, // If true then will display a cross to close the popup.
+            stackup_spacing: 10 // spacing between consecutively stacked growls.
+            });
+        <% end %>
+      <% end %>
 
   </body>
 
