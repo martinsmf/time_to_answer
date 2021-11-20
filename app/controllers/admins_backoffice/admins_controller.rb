@@ -1,9 +1,22 @@
 class AdminsBackoffice::AdminsController < AdminsBackofficeController
   before_action :verify_password, only: [:update]
-  before_action :set_admin, only: [:edit, :update]
+  before_action :set_admin, only: [:edit, :update, :destroy]
 
   def index
     @admins = Admin.all
+  end
+
+  def new
+    @admin = Admin.new
+  end
+
+  def create
+    @admin = Admin.new(params_admin)
+    if @admin.save
+      redirect_to admins_backoffice_admins_path, notic: "Administrador cadastrado com sucesso!"
+    else
+      render :new
+    end
   end
 
   def edit
@@ -17,9 +30,16 @@ class AdminsBackoffice::AdminsController < AdminsBackofficeController
     end
   end
 
+  def destroy
+    if @admin.destroy
+      redirect_to admins_backoffice_admins_path, notice: "Admin deleted with success!"
+    else
+      render :index
+    end
+  end
 
   private
-  
+
   def params_admin
     params.require(:admin).permit(:email, :password, :password_confirmation)
   end
