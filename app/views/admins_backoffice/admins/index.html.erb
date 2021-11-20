@@ -11,9 +11,11 @@
         <th scope="col">#</th>
         <th scope="col">E-mail</th>
         <th scope="col">
+          <div class="d-flex justify-content-center">
           <%= link_to new_admins_backoffice_admin_path, class: 'btn btn-success btn-circle' do %>
             <i class="fas fa-user-plus"></i>
           <% end %>
+          </div>
         </th>
       </tr>
     </thead>
@@ -23,17 +25,21 @@
         <td scope="row"><%= admin.id %></td>
         <td><%= admin.email %></td>
         <td style="width: 200px">
-          <%= link_to edit_admins_backoffice_admin_path(admin), class: 'btn btn-primary btn-circle' do %>
-            <i class="fas fa-edit"></i>
-          <% end %>
-          <%= link_to admins_backoffice_admin_path(admin), method: :delete, class: "btn btn-danger btn-circle",
-            data: { confirm: 'Do you wish really delete the admin?'}  do %>
-            <i class="fas fa-trash"></i>
-          <% end %>
-          
+          <div class="d-flex justify-content-center">
+            <%= link_to edit_admins_backoffice_admin_path(admin), class: 'btn btn-primary btn-circle' do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+            <%= link_to admins_backoffice_admin_path(admin), method: :delete, class: "btn btn-danger btn-circle",
+              data: { confirm: 'Do you wish really delete the admin?'}  do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+          </div>
         </td>
       </tr>
     <% end %>
     </tbody>
   </table> 
+  <div class="d-flex justify-content-center">
+    <%= paginate @admins %>
+  </div>
 </div>
