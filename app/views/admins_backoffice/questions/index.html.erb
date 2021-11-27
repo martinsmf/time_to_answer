@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class ="page-header">Questões</h1>
+  <div/>
+<div/>
+
+<div class="bd-example">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">
+          <div class="d-flex justify-content-center">
+          <%= link_to new_admins_backoffice_question_path, class: 'btn btn-success btn-circle' do %>
+            <i class="fas fa-user-plus"></i>
+          <% end %>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @questions.each do |qeustion|%>
+      <tr>
+        <td scope="row"><%= qeustion.id %></td>
+        <td><%= qeustion.description %></td>
+        <td style="width: 200px">
+          <div class="d-flex justify-content-center">
+            <%= link_to edit_admins_backoffice_question_path(qeustion), class: 'btn btn-primary btn-circle' do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+            <%= link_to admins_backoffice_question_path(qeustion), method: :delete, class: "btn btn-danger btn-circle",
+              data: { confirm: 'Do you wish really delete this subject?'}  do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table> 
+  <div class="d-flex justify-content-center">
+    <%= paginate @questions %>
+  </div>
+</div>
