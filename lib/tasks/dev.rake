@@ -1,6 +1,6 @@
 namespace :dev do
-
   DEFAULT_PASSWORD = 123456
+  DEFAULT_FILES_PATH = File.join(Rails.root, "lib", "tmp")
 
   desc "Configuring development enviroment"
   task setup: :environment do
@@ -11,17 +11,19 @@ namespace :dev do
       show_spinner("Cadastrando o adminstrador padrão...") { %x(rails dev:add_default_admin) }
       show_spinner("Cadastrando administradores extras...") { %x(rails dev:add_extras_admins) }
       show_spinner("Cadastrando o usuário padrão...") { %x(rails dev:add_default_user) }
+      show_spinner("Cadastrando assuntos padroes...") { %x(rails dev:add_subjects) }
+      show_spinner("Cadastrando perguntas e respostas...") { %x(rails dev:add_answers_and_questions) }
     else
       puts "You are not in the development environment"
     end
   end
 
   desc "Adiciona o administrador padrão"
-  task add_default_admin: :environment do 
+  task add_default_admin: :environment do
     Admin.create!(
       email: "admin@admin.com",
       password: DEFAULT_PASSWORD,
-      password_confirmation: DEFAULT_PASSWORD
+      password_confirmation: DEFAULT_PASSWORD,
     )
   end
 
@@ -31,18 +33,40 @@ namespace :dev do
       Admin.create!(
         email: Faker::Internet.email,
         password: DEFAULT_PASSWORD,
-        password_confirmation: DEFAULT_PASSWORD
+        password_confirmation: DEFAULT_PASSWORD,
       )
     end
   end
 
   desc "Adiciona o usuário padrão"
-  task add_default_user: :environment do 
+  task add_default_user: :environment do
     User.create!(
       email: "user@user.com",
       password: DEFAULT_PASSWORD,
-      password_confirmation: DEFAULT_PASSWORD
+      password_confirmation: DEFAULT_PASSWORD,
     )
+  end
+
+  desc "Adicionar assuntos padroes"
+  task add_subjects: :environment do
+    file_name = "subjects.txt"
+    file_path = File.join(DEFAULT_FILES_PATH, file_name)
+
+    File.open(file_path, "r").each do |line|
+      Subject.create!(description: line.strip)
+    end
+  end
+
+  desc "Adiciona perguntas e respostas"
+  task add_answers_and_questions: :environment do
+    Subject.all.each do |subject|
+      rand(5..10).times do |i|
+        Question.create!(
+          description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
+          subject: subject,
+        )
+      end
+    end
   end
 
   private

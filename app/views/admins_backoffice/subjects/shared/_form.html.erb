@@ -1,0 +1,26 @@
+<h1><%= title %></h1>
+
+<% if @subject.errors.any? %>
+  <div class="alert alert-danger alert-dismissible ">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+    <ul>
+      <% @subject.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="bd-example">
+  <%= form_with(model: [ :admins_backoffice, @subject ], local: true) do |form| %>
+  
+    <div class="form-group">
+      <%= form.label :description %>
+      <%= form.text_field :description, class: 'form-control', placeholder: "Descrição do assunto/área" %>
+    </div>
+   
+    <button type="submit" class="btn btn-primary">Salvar</button>
+  <% end %>
+</div>

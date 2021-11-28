@@ -1,4 +1,4 @@
 <%=
   render partial: 'admins_backoffice/admins/shared/form',
-  locals: { title: 'Editing Admin' }
+  locals: { title: t('messages.editing', model: @admin.model_name.human) }
 %>
