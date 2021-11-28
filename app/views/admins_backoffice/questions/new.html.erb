@@ -1,4 +1,4 @@
 <%= 
   render partial: 'admins_backoffice/questions/shared/form',
-  locals: {title: 'Nova questão'}
+  locals: {title: t('messages.creating', model: @question.model_name.human)}
 %>
