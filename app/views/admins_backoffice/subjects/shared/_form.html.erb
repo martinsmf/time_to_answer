@@ -18,9 +18,9 @@
   
     <div class="form-group">
       <%= form.label :description %>
-      <%= form.text_field :description, class: 'form-control', placeholder: "Descrição do assunto/área" %>
+      <%= form.text_field :description, class: 'form-control', placeholder: t('text.placeholder_description', model: @subject.model_name.human) %>
     </div>
    
-    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button type="submit" class="btn btn-primary"><%= t('text.button_submit') %></button>
   <% end %>
 </div>
