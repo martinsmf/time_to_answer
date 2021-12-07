@@ -4,3 +4,4 @@
     placeholder_password: Senha
     placeholder_password_confirm: Confirmação da senha
     placeholder_description: Descrição %{model}
+    remember: Lembrar-me
