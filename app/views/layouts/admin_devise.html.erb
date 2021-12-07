@@ -31,7 +31,7 @@
 <%= javascript_include_tag 'admins_devise' %>
 
 <% if flash %>
-  <%= flash.each do |key, value| %>
+  <% flash.each do |key, value| %>
     <%= javascript_tag do %>
       $.bootstrapGrowl("<%= value %>", {
       ele: 'body', // which element to append to
