@@ -14,18 +14,20 @@ Rails.application.config.assets.paths << Rails.root.join("node_modules")
 
 # These files are in /app/assets
 Rails.application.config.assets.precompile += %w( 
-   admins_backoffice.js 
-   admins_backoffice.css 
-   users_backoffice.js
-   users_backoffice.css
+   admins_backoffice.js admins_backoffice.css 
+   users_backoffice.js users_backoffice.css
+   admins_devise.js admins_devise.css
+   users_devise.js users_devise.css
+   site.js site.css
 )
 
 # These files are in /lib/assets
 Rails.application.config.assets.precompile += %w(
-   sb-admin-2.min.js
-   sb-admin-2.min.css
-   custom.min.js
-   custom.min.css
+   sb-admin-2.min.js sb-admin-2.min.css
+   custom.min.js ustom.min.css
+   surface-fix.js surface-fix.css
+   popper.min.js
+   navbar.css
    img.jpg
    undraw_profile.svg
    undraw_profile_3.svg

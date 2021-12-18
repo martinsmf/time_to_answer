@@ -1,16 +1,88 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html >
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
     <title>TimeToAnswer</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application' %>
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    'site' %>  
   </head>
 
   <body>
-    <h1>LAYOUTS SITE</h1>
-    <%= yield %>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+        <%= link_to "Time to Answer", root_path, class:"navbar-brand" %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+
+        <%= form_with(url: site_search_path, local: true, method: :get, class: "form-inline my-2 my-lg-0" ) do |form| %>
+          <%= form.text_field :term, class: "form-control mr-sm-2", type: "search", placeholder: "Pesquisar", "aria-label": "Pesquisar" %>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+        <% end %>
+          
+        </div>
+        <ul class="navbar-nav mr-auto d-flex justify-content-end">
+          <%= link_to 'Home', site_welcome_index_path, class:"nav-link"%>
+          <% unless user_signed_in? %>
+            <li class="nav-item active">
+                
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Entrar', new_user_session_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Cadastra-se', new_user_registration_path, class:"nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.email %></a>
+              <div class="dropdown-menu" aria-labelledby="dropdown09">
+                <hr class="sidebar-divider my-0">
+                <%= link_to users_backoffice_welcome_index_path, class:"dropdown-item" do %>
+                  <i class="fas fa-user"></i> Perfil
+                <% end %>
+                <hr class="sidebar-divider my-0">
+                <%= link_to destroy_user_session_path, class:"dropdown-item", method: :delete do %>
+                  <i class="fas fa-sign-out-alt"></i> Sair
+                <% end %>
+                <hr class="sidebar-divider my-0">
+                <a class="dropdown-item" href="#">Something else here</a>
+                <hr class="sidebar-divider my-0">
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+      <main role="main"> 
+        <%= yield %>
+      </main>
+    </div>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'site' %>
+
+    <% if notice %>
+        <%= javascript_tag do %>
+            $.bootstrapGrowl("<%= notice %>", {
+            ele: 'body', // which element to append to
+            type: 'success', // (null, 'info', 'danger', 'success')
+            offset: {from: 'top', amount: 10}, // 'top', or 'bottom'
+            align: 'right', // ('left', 'right', or 'center')
+            width: 250, // (integer, or 'auto')
+            delay: 4000, // Time while the message will be displayed. It's not equivalent to the *demo* timeOut!
+            allow_dismiss: true, // If true then will display a cross to close the popup.
+            stackup_spacing: 10 // spacing between consecutively stacked growls.
+            });
+        <% end %>
+      <% end %>
   </body>
 </html>
