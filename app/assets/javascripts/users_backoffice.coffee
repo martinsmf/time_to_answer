@@ -6,4 +6,5 @@
 //=require fastclick/lib/fastclick.js
 //=require nprogress/nprogress.js
 //=require malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js
+//= require bootstrap-growl-ifightcrime/jquery.bootstrap-growl.js
 //=require js/custom.min.js
