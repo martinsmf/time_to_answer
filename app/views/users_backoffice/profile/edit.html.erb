@@ -23,9 +23,35 @@
             </ul>
           </div>
           <% end %>
-            <%= form_with(url: users_backoffice_profile_path, model: @user, local: true, class:"form-horizontal
-              form-label-left") do |form| %>
+            <%= simple_form_for @user, url: users_backoffice_profile_path, html: {class:"form-horizontal form-label-left"} do |f| %>
               <div class="item form-group">
+                <%= f.label :first_name, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                <div class="col-md-6 col-sm-6 ">
+                  <%= f.input :first_name, label:false, input_html: {class: 'form-control'} %>
+                </div>
+              </div>
+              <div class="item form-group">
+              <%= f.label :last_name, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                <div class="col-md-6 col-sm-6 ">
+                  <%= f.input :last_name, label:false, input_html: {class: 'form-control'}  %>
+                </div>
+              </div>
+              <div class="item form-group">
+              <%= f.label :email, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+                <div class="col-md-6 col-sm-6 ">
+                  <%= f.input :email, label:false, input_html: {class: 'form-control'}  %>
+                </div>
+              </div>
+              <div class="ln_solid"></div>
+              
+              <div class="item form-group">
+                <div class="col-md-6 col-sm-6 offset-md-3">
+                  <%= f.submit :submit, class:"btn btn-success" %>
+                </div>
+              </div> 
+              <%
+=begin%>
+ <div class="item form-group">
                 <%= form.label :first_name , class:"col-form-label col-md-3 col-sm-3 label-align"%>
                   <div class="col-md-6 col-sm-6 ">
                     <%= form.text_field :first_name, class: 'form-control' %>
@@ -44,7 +70,7 @@
                   </div>
               </div>
 
-              <%= form.fields_for :user_profile do |profile_form| %>
+              <%= form.simple_fields_for :user_profile do |profile_form| %>
                 <div class="item form-group">
                   <%= profile_form.label :address, class:"col-form-label col-md-3 col-sm-3 label-align" %>
                     <div class="col-md-6 col-sm-6 ">
@@ -111,7 +137,9 @@
                   <button class="btn btn-primary" type="reset">Reset</button>
                   <button type="submit" class="btn btn-success">Submit</button>
                 </div>
-              </div>
+              </div> 
+<%
+=end%>
               <% end %>
                 <!-- </form> -->
       </div>
