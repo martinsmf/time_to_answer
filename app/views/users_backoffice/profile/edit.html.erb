@@ -44,7 +44,6 @@
                   </div>
               </div>
 
-
               <%= form.fields_for :user_profile do |profile_form| %>
                 <div class="item form-group">
                   <%= profile_form.label :address, class:"col-form-label col-md-3 col-sm-3 label-align" %>
@@ -86,8 +85,8 @@
 
                 <div class="item form-group">
                   <%= profile_form.label :birthdate, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-                    <div class="col-md-6 col-sm-6 ">
-                      <%= profile_form.text_field :birthdate, class: 'form-control' %>
+                    <div class="col-md-6 col-sm-6">
+                      <%= profile_form.text_field :birthdate, value: I18n.l(@user.user_profile.birthdate), class: 'form-control datepicker' %>
                     </div>
                 </div>
               <% end %>
