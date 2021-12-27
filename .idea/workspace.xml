@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c766eb9-b132-4e49-bb76-ef0e49018ce8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/views/site/answer/question.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/site/answer/question.js.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/site/answer/question.js.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/site/shared/_questions.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/site/shared/_questions.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/time_to_answer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/time_to_answer.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +41,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Rails.Development: time_to_answer">
     <configuration name="Development: time_to_answer" type="RailsRunConfigurationType" factoryName="Rails">
@@ -161,6 +159,7 @@
       <workItem from="1638651315201" duration="599000" />
       <workItem from="1638812943911" duration="4173000" />
       <workItem from="1639596738513" duration="5000" />
+      <workItem from="1640613401702" duration="188000" />
     </task>
     <servers />
   </component>

@@ -216,6 +216,12 @@
             stackup_spacing: 10 // spacing between consecutively stacked growls.
             });
         <% end %>
-      <% end %>
+    <% end %>
+
+    <%= javascript_tag do %>
+      $(function() {
+        $('.datepicker').datepicker();
+      })
+    <% end %>
   </body>
 </html>
