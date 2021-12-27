@@ -86,7 +86,10 @@
                 <div class="item form-group">
                   <%= profile_form.label :birthdate, class:"col-form-label col-md-3 col-sm-3 label-align" %>
                   <div class="col-md-6 col-sm-6">
-                    <%= profile_form.input :birthdate, value: I18n.l(@user.user_profile.birthdate), as: :date, html5: true, input_html: {class: 'form-control'}, label: false %>
+                    <%= profile_form.input :birthdate, 
+                      value: (I18n.l(@user.user_profile.birthdate) unless @user.user_profile.birthdate.blank?),
+                      as: :date, html5: true, input_html: {class: 'form-control'}, 
+                      label: false %>
                   </div>
                 </div>
                 
@@ -113,79 +116,6 @@
                   <%= form.submit :submit, class:"btn btn-success" %>
                 </div>
               </div> 
-              <%
-=begin%>
- <div class="item form-group">
-              <%= form.simple_fields_for :user_profile do |profile_form| %>
-                <div class="item form-group">
-                  <%= profile_form.label :address, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-                    <div class="col-md-6 col-sm-6 ">
-                      <%= profile_form.text_field :address, class: 'form-control' %>
-                    </div>
-                </div>
-
-                <div class="item form-group">
-                  <%= profile_form.label :gender, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-										<div class="col-md-6 col-sm-6 ">
-											<div id="gender" class="btn-group" data-toggle="buttons">
-											  <label class="btn <%= gender_select(@user, "M") %>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-													<%= profile_form.radio_button :gender, "M", class: 'join-btn', "data-parsley-multiple":"gender" %> &nbsp; Male &nbsp;
-												</label>
-												<label class="btn <%= gender_select(@user, "F")%>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-													<%= profile_form.radio_button :gender, "F", class: 'join-btn', "data-parsley-multiple":"gender" %> &nbsp; Female &nbsp;
-												</label>
-											</div>
-										</div>
-								</div>
-
-                <%= javascript_tag do %>
-                  let labels = document.querySelectorAll('div#gender label')
-                  
-                  labels.forEach(label => {
-                    label.addEventListener('click', () => {
-                      label.classList.remove('btn-secondary')
-                      label.classList.add('btn-primary')
-                      labels.forEach(lbl => {
-                        if(lbl !== label){
-                          lbl.classList.remove('btn-primary')
-                          lbl.classList.add('btn-secondary')
-                        }
-                      })
-                    })
-                  })
-                <% end %>
-
-                <div class="item form-group">
-                  <%= profile_form.label :birthdate, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-                    <div class="col-md-6 col-sm-6">
-                      <%= profile_form.text_field :birthdate, value: I18n.l(@user.user_profile.birthdate), class: 'form-control datepicker' %>
-                    </div>
-                </div>
-              <% end %>
-
-              <div class="item form-group">
-                <%= form.label :password, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-                  <div class="col-md-6 col-sm-6 ">
-                    <%= form.password_field :password, class: 'form-control' %>
-                  </div>
-              </div>
-
-              <div class="item form-group">
-                <%= form.label :password_confirmation, class:"col-form-label col-md-3 col-sm-3 label-align" %>
-                  <div class="col-md-6 col-sm-6 ">
-                    <%= form.password_field :password_confirmation, class: 'form-control' %>
-                  </div>
-              </div>
-              <div class="ln_solid"></div>
-              <div class="item form-group">
-                <div class="col-md-6 col-sm-6 offset-md-3">
-                  <button class="btn btn-primary" type="button">Cancel</button>
-                  <button class="btn btn-primary" type="reset">Reset</button>
-                  <button type="submit" class="btn btn-success">Submit</button>
-                </div>
-              </div> 
-<%
-=end%>
               <% end %>
                 <!-- </form> -->
       </div>
