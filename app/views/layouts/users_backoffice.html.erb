@@ -30,7 +30,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <%= link_to image_tag('img.jpg', alt:"...", class:"img-circle profile_img"), '#', 'data-toggle': "modal", 'data-target': "#avatarModal" %>
+                <%= link_to image_tag(avatar_url, alt:"...", class:"img-circle profile_img", id: "imgAvatarLg"), '#', 'data-toggle': "modal", 'data-target': "#avatarModal" %>
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -92,7 +92,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <%= image_tag 'img.jpg', alt:'' %>
+                    <%= image_tag avatar_url, alt:'', id: "imgAvatarSm" %>
                     <%= current_user.email %>
                     <span class=" fa fa-angle-down"></span>
                   </a>
@@ -136,19 +136,31 @@
     <div class="modal fade" id="avatarModal" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="TituloModalCentralizado">Título do modal</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            teste
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary">Salvar mudanças</button>
-          </div>
+          <%= simple_form_for current_user, url: users_backoffice_profile_path, html: {class:"form-horizontal form-label-left" , novalidate:'novalidate'}, remote: true do |form| %>
+            <div class="modal-header">
+              <h5 class="modal-title" id="TituloModalCentralizado">Avatar</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= form.simple_fields_for :user_profile do |profile_form| %>
+                <div class="d-flex justify-content-center">
+                  <div class="p-2 bd-highlight">
+                    <%= profile_form.label :avatar %>
+                  </div>
+                  <div >
+                    <%= image_tag(avatar_url, alt:"...", class:"img-circle profile_img", id: "imgAvatarModalLg")%> 
+                    <%= profile_form.input_field :avatar %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              <%= form.submit 'Salvar', class:"btn btn-primary" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
