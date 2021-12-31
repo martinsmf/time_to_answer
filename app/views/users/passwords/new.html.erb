@@ -1,6 +1,38 @@
-<h2>Forgot your password?</h2>
+<div>
+  <a class="hiddenanchor" id="signin"></a>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <div class="login_wrapper">
+      <section class="login_content">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <h1>Forgot your password?</h1>
+          <div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control",
+             placeholder: t('text.placeholder_email', model: resource_class) %>
+          </div>
+          <div>
+              <%= f.submit "Send me reset password instructions", class:"btn btn-default submit",
+                style:"float: none; margin-left:0px;" %>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <div class="separator">
+            <div class="clearfix"></div>
+            <br />
+
+            <div>
+              <h1><i class="fa fa-paw"></i> Time to Answer!</h1>
+              <p>©2021 Matheus Martins</p>
+            </div>
+          </div>
+        <% end %>
+      </section>
+  </div>
+</div>
+
+<%
+=begin%>
+ <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field">
@@ -13,4 +45,6 @@
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<%= render "users/shared/links" %> 
+<%
+=end%>

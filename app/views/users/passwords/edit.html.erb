@@ -1,6 +1,41 @@
-<h2>Change your password</h2>
+<div>
+  <a class="hiddenanchor" id="signin"></a>
+  <div class="login_wrapper">
+      <section class="login_content">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <h1> Change your password </h1>
+          <%= f.hidden_field :reset_password_token %>
+          <div>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: t("text.placeholder_password") %>
+          </div>
+          <div>
+            <%= f.password_field :password_confirmation, autocomplete: "current-password", class: "form-control", placeholder: t("text.placeholder_password_confirm") %>
+          </div>
+          <div>
+              <%= f.submit "Alterar senha", class:"btn btn-default submit",
+                style:"float: none; margin-left:0px;" %>
+          </div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <div class="clearfix"></div>
+
+          <div class="separator">
+            <div class="clearfix"></div>
+            <br />
+
+            <div>
+              <h1><i class="fa fa-paw"></i> Time to Answer!</h1>
+              <p>©2021 Matheus Martins</p>
+            </div>
+          </div>
+        <% end %>
+      </section>
+  </div>
+</div>
+
+
+<%
+=begin%>
+ <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
@@ -22,4 +57,6 @@
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<%= render "users/shared/links" %> 
+<%
+=end%>

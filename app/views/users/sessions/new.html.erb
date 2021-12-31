@@ -15,6 +15,7 @@
           <div>
               <%= f.submit "#{t('text.button_login')}", class:"btn btn-default submit",
                 style:"float: none; margin-left:0px;" %>
+              <%= link_to 'Lost your password?', new_user_password_path, class: "reset_pass" %>
           </div>
 
           <div class="clearfix"></div>
