@@ -12,9 +12,12 @@
         <th scope="col"><%= translate_attribute(@subjects, :description) %></th>
         <th scope="col">
           <div class="d-flex justify-content-center">
-          <%= link_to new_admins_backoffice_subject_path, class: 'btn btn-success btn-circle' do %>
-            <i class="fas fa-user-plus"></i>
-          <% end %>
+            <%= link_to new_admins_backoffice_subject_path, class: 'btn btn-success btn-circle' do %>
+              <i class="fas fa-user-plus"></i>
+            <% end %>
+            <%= link_to admins_backoffice_subjects_path(format: :pdf), class: 'btn btn-danger btn-circle' do %>
+              <i class="far fa-file-pdf"></i>
+            <% end %>
           </div>
         </th>
       </tr>
