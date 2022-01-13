@@ -5,7 +5,7 @@ class AdminsBackoffice::SubjectsController < AdminsBackofficeController
     respond_to do |format|
       format.html {@subjects = Subject.all.order(:description).page(params[:page])}
       format.pdf {@subjects = Subject.all.order(:description)}
-      format.json {render json: (@subjects = Subject.all.order(:description)), except: [:created_at, :updated_at]}
+      format.json {@subjects = Subject.all.order(:description)}
     end
   end
 
@@ -16,7 +16,7 @@ class AdminsBackoffice::SubjectsController < AdminsBackofficeController
   def create
     @subject = Subject.new(params_subject)
     if @subject.save
-      redirect_to admins_backoffice_subjects_path, notic: "Assunto/Área cadastrado com sucesso!"
+      redirect_to admins_backoffice_subjects_path, notice: "Assunto/Área cadastrado com sucesso!"
     else
       render :new
     end
