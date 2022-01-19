@@ -28,6 +28,7 @@ class UsersBackoffice::ProfileController < UsersBackofficeController
       user_profile_attributes: [
         :id,
         :address,
+        :zip_code,
         :gender,
         :birthdate,
         :avatar

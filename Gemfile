@@ -39,11 +39,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cocoon'
 gem 'devise'
 gem 'faker'
+gem 'hiredis'
 gem 'kaminari'
 gem 'kaminari-i18n'
 gem 'prawn-rails'
 gem "simple_form"
 gem 'rails-i18n', '~> 5.1'
+gem 'redis'
 gem 'tty-spinner'
 
 group :development, :test do
