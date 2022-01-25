@@ -46,6 +46,8 @@ gem 'prawn-rails'
 gem "simple_form"
 gem 'rails-i18n', '~> 5.1'
 gem 'redis'
+gem 'searchkick'
+gem 'trix'
 gem 'tty-spinner'
 
 group :development, :test do
