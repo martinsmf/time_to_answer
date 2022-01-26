@@ -1,9 +1,8 @@
-let answer_button = document.getElementById('submit_<%= @question_id %>');
+var answer_button = document.getElementById('submit_<%= @question_id %>');
 
 answer_button.classList.remove('btn-outline-dark');
 answer_button.classList.remove('btn-success');
 answer_button.classList.remove('btn-danger');
-
 if (<%= @correct %>) {
   answer_button.classList.add('btn-success');
   $.bootstrapGrowl("You hit! \\o/", {
